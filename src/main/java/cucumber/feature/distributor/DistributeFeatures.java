@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mojo(name = "distribute_features", threadSafe = true, defaultPhase = LifecyclePhase.TEST_COMPILE)
+@Mojo(name = "distribute_features", threadSafe = true, defaultPhase = LifecyclePhase.CLEAN)
 public class DistributeFeatures extends AbstractMojo
 {
     @Parameter(readonly = true)
@@ -58,10 +58,10 @@ public class DistributeFeatures extends AbstractMojo
     public void execute() throws MojoExecutionException {
         try {
 	        FileUtils.cleanDirectory(new File(distributedFeatureDirectory));
-	        Thread.sleep(5000); //Let the files be deleted.
+	        Thread.sleep(2000); //Let the files be deleted.
             readCompositeFeatures(featureDirectory);
             writeDistributedFeatures(distributedFeatureDirectory);
-            Thread.sleep(15000); //Let the files be created.
+            Thread.sleep(5000); //Let the files be created.
         }
         catch (Exception e) {
             System.out.println(e.toString());

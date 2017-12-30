@@ -1,8 +1,7 @@
 [![](https://jitpack.io/v/sethijatin/cucumber-feature-distributor.svg)](https://jitpack.io/#sethijatin/cucumber-feature-distributor)
 # Cucumber Feature-Browser Distributor
 
-## Objective
-The plugin is created to cater two problems faced in cucumber:
+Selenium projects are required to be run on various browsers and cucumber doesn't provide this feature out of the box. This plugin aims to distribute the scenarios and features over an array of browser defined rewriting each scenario using different browser tags. Other than this it also re-writes the feature files such a way that each file will have single test execution balancing the load on each thread in a multi-threaded execution.
 
 ### Distributed Execution Of Tests
 * A Feature File in cucumber is usually a group of scenarios.

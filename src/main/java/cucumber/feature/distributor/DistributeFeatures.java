@@ -57,6 +57,7 @@ public class DistributeFeatures extends AbstractMojo
 
     public void execute() throws MojoExecutionException {
         try {
+	    FileUtils.cleanDirectory(new File(distributedFeatureDirectory));
             readCompositeFeatures(featureDirectory);
             writeDistributedFeatures(distributedFeatureDirectory);
             Thread.sleep(5000);

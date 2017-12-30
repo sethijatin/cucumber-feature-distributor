@@ -11,7 +11,7 @@ The plugin is created to cater two problems faced in cucumber:
 * While such a problem is usually ignored, this may well cut down the efficiency of the team.
 * This plugin breaks the feature files into mutliple feature files such that each file contains a single scenario for execution.
 
-### Scenarios Distributed Over Browsers
+### Scenarios Re-Written For Each Browser Defined In Browser Configuration File (YAML)
 * Usually teams using Selenium run their test cases on multiple browsers.
 * Cucumber does not provide a functionality out of box to run one scenario on multiple browsers.
 * This means scenario may have to be manually re-written or tagged in multiple runners to achieve the objective. The process is error prone and time consuming.

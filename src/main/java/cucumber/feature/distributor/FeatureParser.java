@@ -147,15 +147,39 @@ public class FeatureParser {
         return  tagString;
     }
 
+    private List<String> getSeparatedRows(ArrayList<Feature.Row> rows){
+        List<String> rowList = new ArrayList<>();
+        String exampleHeading = writeExampleCells(rows.get(0).getCells()) + "\n";
+        for (int i=1; i < rows.size(); i++){
+            rowList.add(exampleHeading + writeExampleCells(rows.get(i).getCells()));
+        }
+        return rowList;
+    }
+
+    private String writeDataTable(ArrayList<Feature.Row> rows){
+        List<String> rowList = getSeparatedRows(rows);
+        String dataTable = "";
+        for (int i=0; i< rows.size(); i++){
+            dataTable = dataTable + writeExampleCells(rows.get(i).getCells()) + "\n";
+        }
+        return dataTable;
+    }
+
     private String writeSteps (ArrayList<Feature.Step> steps){
         String stepsString = "";
         for (Feature.Step step: steps) {
             if (step.getDocString() == null){
                 stepsString = stepsString + "\t\t" + step.getKeyword() + step.getName() + "\n";
+                if (step.getRows() !=null){
+                    stepsString = stepsString + writeDataTable(step.getRows()) + "\n";
+                }
             }
             else {
-                String docString = "\n\t\t\"\"\"\n\t\t" + step.getDocString().getValue().replaceAll("\r\n", "\r\n\t\t") + "\n\t\t\"\"\"\n";
+                String docString = "\n\t\t\"\"\"\n\t\t" + step.getDocString().getValue().replaceAll("\r\n", "\r\n\t\t") + "\n\t\t\"\"\"\n ";
                 stepsString = stepsString + "\t\t" + step.getKeyword() + step.getName() + docString;
+                if (step.getRows() !=null){
+                    stepsString = stepsString + writeDataTable(step.getRows()) + "\n";
+                }
             }
         }
         return stepsString;

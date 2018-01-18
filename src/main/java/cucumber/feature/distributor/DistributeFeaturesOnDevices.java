@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mojo(name = "distribute-features", threadSafe = true, defaultPhase = LifecyclePhase.CLEAN)
-public class DistributeFeatures extends AbstractMojo
+@Mojo(name = "distribute-features-on-devices", threadSafe = true, defaultPhase = LifecyclePhase.CLEAN)
+public class DistributeFeaturesOnDevices extends AbstractMojo
 {
     @Parameter(readonly = true)
     private String featureDirectory;
@@ -48,7 +48,7 @@ public class DistributeFeatures extends AbstractMojo
         File[] directoryListing = dir.listFiles();
         if (directoryListing != null) {
             for (File child : directoryListing) {
-                FeatureParser featureParser = new FeatureParser();
+                FeatureParserDevices featureParser = new FeatureParserDevices(pathToBrowserJSON);
                 List<String> scenarioList = featureParser.prepareExecutableScenarios(child.getAbsolutePath());
                 distributedScenarioList.addAll(scenarioList);
             }

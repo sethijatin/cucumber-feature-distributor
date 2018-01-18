@@ -66,11 +66,11 @@ MobileDevices: #Do not change the nae DesktopDevices. This is hard mapped in the
  <plugin>
       <groupId>com.github.sethijatin</groupId>
       <artifactId>cucumber-feature-distributor</artifactId>
-      <version>1.2</version>
+      <version>1.4</version>
       <executions>
           <execution>
               <goals>
-                  <goal>distribute_features</goal>
+                  <goal>distribute-features</goal>
               </goals>
           </execution>
       </executions>

@@ -52,6 +52,7 @@ public class FeatureParserDevices {
     private Set<String> getDeviceList (String platform, DeviceList devices){
 
         Set<String> deviceTags = new LinkedHashSet<>();
+        deviceList.clear();
 
         switch (platform){
             case "all":
@@ -70,9 +71,7 @@ public class FeatureParserDevices {
                 break;
         }
         for (String key : deviceList.keySet()){
-            if (!key.equals("Phantom")){
-                deviceTags.add("@device=" + key);
-            }
+            deviceTags.add("@device=" + key);
         }
         return deviceTags;
     }

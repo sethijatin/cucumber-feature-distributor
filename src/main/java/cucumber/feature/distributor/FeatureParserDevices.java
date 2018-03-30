@@ -20,8 +20,6 @@ public class FeatureParserDevices {
         this.browserConfiguration = browserConfigurator;
     }
 
-    private HashMap<String, HashMap<String, String>> deviceList = new HashMap<>();
-
     private Feature[] getFeatures(String filepath) throws Exception{
         //Parse feature into JSON using Gherkin
         String featureText = FixJava.readReader(new InputStreamReader(new FileInputStream(filepath), "UTF-8"));
@@ -52,7 +50,7 @@ public class FeatureParserDevices {
     private Set<String> getDeviceList (String platform, DeviceList devices){
 
         Set<String> deviceTags = new LinkedHashSet<>();
-        deviceList.clear();
+        HashMap<String, HashMap<String, String>> deviceList = new HashMap<>();
 
         switch (platform){
             case "all":
